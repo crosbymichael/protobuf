@@ -90,9 +90,9 @@ func timestampFromProto(ts *timestamp) (time.Time, error) {
 	// timestamp. Instead return whatever time.Unix gives us.
 	var t time.Time
 	if ts == nil {
-		t = time.Unix(0, 0).UTC() // treat nil like the empty Timestamp
+		t = time.Unix(0, 0) // treat nil like the empty Timestamp
 	} else {
-		t = time.Unix(ts.Seconds, int64(ts.Nanos)).UTC()
+		t = time.Unix(ts.Seconds, int64(ts.Nanos))
 	}
 	return t, validateTimestamp(ts)
 }
